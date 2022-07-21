@@ -31,6 +31,9 @@ GetIMState(void) {
   FILE *fp;
   char buf[1024];
 
+  if (!MacIM || !IMASCIIKey || !IMLocalKey)
+    return 0;
+
   fp = popen("im-select", "r");
   if (fp == NULL)
     return 0;
