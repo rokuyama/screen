@@ -297,6 +297,11 @@ struct win
 #else
   int w_exitstatus;
 #endif
+
+#ifdef MACIM /* struct win: IM states for given window */
+  int w_CurrentIMState;
+  int w_SavedIMState;
+#endif
 };
 
 

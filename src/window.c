@@ -624,6 +624,11 @@ struct NewWindow *newwin;
 
   p->w_type = type;
 
+#ifdef MACIM /* MakeWindow(): initialize for new window */
+  p->w_CurrentIMState = 0;
+  p->w_SavedIMState = 0;
+#endif
+
   /* save the command line so that zombies can be resurrected */
   for (i = 0; nwin.args[i] && i < MAXARGS - 1; i++)
     p->w_cmdargs[i] = SaveStr(nwin.args[i]);

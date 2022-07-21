@@ -1478,6 +1478,25 @@ int c, intermediate;
 	  break;
 	}
       break;
+#ifdef MACIM /* DoCSI(): TTIME parser */
+    case '<':
+      switch (c)
+        {
+        case 'r':	/* recovery IM state */
+          SetIMState(curr->w_SavedIMState);
+          curr->w_intermediate = 0;
+          break;
+        case 's':	/* save IM state */
+          curr->w_SavedIMState = GetIMState();
+          curr->w_intermediate = 0;
+          break;
+        case 't':	/* set IM state */
+          SetIMState(a1);
+          curr->w_intermediate = 0;
+          break;
+        }
+      break;
+#endif
     }
 }
 

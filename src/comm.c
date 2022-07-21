@@ -207,6 +207,10 @@ struct comm comms[RC_LAST + 1] =
   { "hstatus",		NEED_FORE|ARGS_1 },
   { "idle",		ARGS_0|ARGS_ORMORE },
   { "ignorecase",	ARGS_01 },
+#ifdef MACIM /* comms[]: definition of cmd imasciikey & imlocalkey */
+  { "imasciikey",	ARGS_1 },
+  { "imlocalkey",	ARGS_1 },
+#endif
   { "info",		CAN_QUERY|NEED_LAYER|ARGS_0 },
 #ifdef ENCODINGS
   { "kanji",		NEED_FORE|ARGS_12 },
@@ -224,6 +228,9 @@ struct comm comms[RC_LAST + 1] =
   { "login",		NEED_FORE|ARGS_01 },
 #endif
   { "logtstamp",	ARGS_012 },
+#ifdef MACIM /* comms[]: definition of cmd macim */
+  { "macim",		ARGS_1 },
+#endif
 #ifdef MAPKEYS
   { "mapdefault",	NEED_DISPLAY|ARGS_0 },
   { "mapnotnext",	NEED_DISPLAY|ARGS_0 },

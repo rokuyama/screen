@@ -582,3 +582,7 @@
 #undef PTYRANGE0
 #undef PTYRANGE1
 
+/*
+ * define MACIM to support MacIM control.
+ */
+#undef MACIM

@@ -504,6 +504,11 @@ char **av;
 #ifdef DW_CHARS
   cjkwidth = 0;
 #endif
+#ifdef MACIM /* main(): initialize for startup */
+  MacIM = 0;
+  IMASCIIKey = NULL;
+  IMLocalKey = NULL;
+#endif
   nwin = nwin_undef;
   nwin_options = nwin_undef;
   strcpy(screenterm, "screen");
@@ -1841,6 +1846,9 @@ int i;
    * we _cannot_ call eexit(i) here, 
    * instead of playing with the Socket above. Sigh.
    */
+#ifdef MACIM /* Finit(): switch off before exit */
+  SetIMState(0);
+#endif
   exit(i);
 }
 
@@ -2001,6 +2009,9 @@ int mode;
 #endif
       D_user->u_detachwin = D_fore->w_number;
       D_user->u_detachotherwin = D_other ? D_other->w_number : -1;
+#ifdef MACIM /* Detach(): save before detach */
+      D_fore->w_CurrentIMState = GetIMState();
+#endif
     }
   AutosaveLayout(D_layout);
   layout_last = D_layout;

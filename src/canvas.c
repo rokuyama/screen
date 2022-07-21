@@ -241,6 +241,11 @@ struct win *wi;
   struct layer *l;
   struct canvas *cvp, **cvpp;
 
+#ifdef MACIM /* SetCanvasWindow(): save before window change */
+  if (D_fore)
+    D_fore->w_CurrentIMState = GetIMState();
+#endif
+
   l = cv->c_layer;
   display = cv->c_display;
 
@@ -340,6 +345,14 @@ struct win *wi;
 	    }
 	}
     }
+
+#ifdef MACIM /* SetCanvasWindow(): restore after window change */
+  if (D_fore)
+    SetIMState(D_fore->w_CurrentIMState);
+  else
+    SetIMState(0);
+#endif
+
 }
 
 static void

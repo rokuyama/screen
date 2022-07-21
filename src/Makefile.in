@@ -68,7 +68,8 @@ OFILES=	screen.o ansi.o fileio.o mark.o misc.o resize.o socket.o \
 	termcap.o input.o attacher.o pty.o process.o display.o comm.o \
 	kmapdef.o acls.o braille.o braille_tsi.o logfile.o layer.o \
 	list_generic.o list_display.o list_window.o \
-	sched.o teln.o nethack.o encoding.o canvas.o layout.o viewport.o
+	sched.o teln.o nethack.o encoding.o canvas.o layout.o viewport.o \
+	@OFILES_MACIM@
 
 all:	screen
 

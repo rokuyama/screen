@@ -499,3 +499,12 @@ extern int   PrepareEncodedChar __P((int));
 # endif
 #endif
 extern int   EncodeChar __P((char *, int, int, int *));
+
+#ifdef MACIM /* extern.h: definition of public variables and functions */
+/* macim.c */
+extern int MacIM;
+extern char *IMASCIIKey;
+extern char *IMLocalKey;
+extern int GetIMState __P((void));
+extern void SetIMState __P((int));
+#endif
